@@ -51,7 +51,7 @@ class MapConverter(object):
         meshes = []
 
         for x in range(map.shape[0]):
-            for y in range(map.shape[0]):
+            for y in range(map.shape[1]):
                 if map[x][y] < self.threshold:
                     continue
 
@@ -152,7 +152,7 @@ class MapConverter(object):
                 mesh.fix_normals()
             meshes.append(mesh)
         mesh = trimesh.util.concatenate(meshes)
-        mesh.remove_duplicate_faces()
+        #mesh.remove_duplicate_faces()
         # mesh will still have internal faces.  Would be better to get
         # all duplicate faces and remove both of them, since duplicate faces
         # are guaranteed to be internal faces
